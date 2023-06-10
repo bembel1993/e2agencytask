@@ -114,6 +114,14 @@
         const popup = document.createElement('div');
         popup.classList.add('popup-message');
         popup.textContent = message;
+        popup.style.backgroundColor = 'white';
+        popup.style.color = 'rgb(39, 32, 71)';
+        popup.style.width = '300px';
+        popup.style.height = '300px';
+        popup.style.border = '5px solid rgb(39, 32, 71)';
+        popup.style.textAlign = 'center';
+        popup.style.top = '40%';
+        popup.style.fontSize = '20px';
         document.body.appendChild(popup);
 
         setTimeout(() => {
@@ -121,12 +129,30 @@
         }, 3000);
       }
     } else if (emailInput.value || isValidEmail(emailInput.value)) {
-      successMsg.textContent = 'Email address is valid.';
-      return;
+      //successMsg.textContent = 'Email address is valid.';
+      //return;
+      function showPopupMessage(message) {
+        const popup = document.createElement('div');
+        popup.classList.add('popup-message');
+        popup.textContent = message;
+        popup.style.backgroundColor = 'white';
+        popup.style.color = 'rgb(39, 32, 71)';
+        popup.style.width = '300px';
+        popup.style.height = '300px';
+        popup.style.border = '5px solid rgb(39, 32, 71)';
+        popup.style.textAlign = 'center';
+        popup.style.top = '50%';
+        popup.style.fontSize = '20px';
+        document.body.appendChild(popup);
+
+        setTimeout(() => {
+          popup.remove();
+        }, 3000);
+      };
     }
 
-
-    fetch('https://example.com/subscribe', {
+    // in 'fetch(example.com, ' i can to write adress for send email subscribe
+    fetch(emailInput.value || isValidEmail(emailInput.value), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -134,8 +160,8 @@
       body: JSON.stringify({ email: emailInput.value })
     })
       .then(response => {
-        if (response.ok) {
-          showPopupMessage('Thank you for subscribing!');
+        if (emailInput.value || isValidEmail(emailInput.value)) {
+          showPopupMessage('SUCCESS!');
           form.reset();
         } else {
           showPopupMessage('Something went wrong. Please try again later.');
