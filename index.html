@@ -9,7 +9,10 @@
 
 <body>
 
-  <div class="left-block"></div>
+  <div class="left-block">
+    <div class="blotch"></div>
+  </div>
+
   <div class="right-block"></div>
 
   <div class="main-content">
@@ -49,6 +52,7 @@
         </div>
       </div>
       <br><br><br>
+      
       <p class="weremaking">Check out event page when you wait:</p>
       <a href="https://www.javascripttutorial.net/">
         <button class="long-button">Go to the event &nbsp;&nbsp;
@@ -63,9 +67,9 @@
     <form id="subscription-form">
       <input type="email" placeholder="Enter your email address" id="email-input">
       <button type="submit" id="submit-btn">
-        <p class="glyphicon glyphicon-arrow-right"></p>
+        <p class="glyphicon glyphicon-arrow-right "></p>
       </button>
-     <!-- <div id="error-msg"></div>
+    <!--<div id="error-msg"></div>
       <div id="success-msg"></div>-->
     </form>
   </footer>
@@ -101,15 +105,15 @@
 <script>
   const form = document.querySelector('#subscription-form');
   const emailInput = document.querySelector('#email-input');
- // const errorMsg = document.querySelector('#error-msg');
- // const successMsg = document.querySelector('#success-msg');
+  //const errorMsg = document.querySelector('#error-msg');
+  //const successMsg = document.querySelector('#success-msg');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
     if (!emailInput.value || !isValidEmail(emailInput.value)) {
-      // errorMsg.textContent = 'Please enter a valid email address.';
-      // return;
+     //  errorMsg.textContent = 'Please enter a valid email address.';
+     //  return;
       function showPopupMessage(message) {
         const popup = document.createElement('div');
         popup.classList.add('popup-message');
@@ -141,8 +145,10 @@
         popup.style.height = '300px';
         popup.style.border = '5px solid rgb(39, 32, 71)';
         popup.style.textAlign = 'center';
-        popup.style.top = '50%';
         popup.style.fontSize = '20px';
+        popup.style.top = '50%';
+        popup.style.left = '50%';
+        
         document.body.appendChild(popup);
 
         setTimeout(() => {
@@ -151,7 +157,7 @@
       };
     }
 
-    // in 'fetch(example.com, ' i can to write adress for send email subscribe
+    // in 'fetch(example.com, ' here to write address for send email subscribe
     fetch(emailInput.value || isValidEmail(emailInput.value), {
       method: 'POST',
       headers: {

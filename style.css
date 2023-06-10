@@ -31,19 +31,21 @@
 	top: 0;
 	left: 0;
 	width: 23%;
-	height: 35%;
+	height: 29%;
 	background-color: rgb(39, 32, 71);
-	border-radius: 0 0 100% 0 / 0 0 100% 0;
+	border-radius: 0 0 100% 0 / 0 0 90% 0;
+	
   }
   
   .right-block {
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 10%;
+	width: 12%;
 	height: 25%;
 	background-color: rgb(39, 32, 71);
 	border-radius: 0 0 0 100% / 0 0 0 100%;
+	
   }
   
   .main-content {
@@ -134,7 +136,7 @@ p.weremaking {
 	padding: 5px 100px 10px 20px;
 	border: none;
 	outline: none;
-	
+	left: 50%;
   }
   
   #submit-btn {
@@ -147,6 +149,7 @@ p.weremaking {
 	position: relative;
 	left: -35px;
 	cursor: pointer;
+	padding: 3px;
 	justify-content: center;
   	align-items: center;
   }
@@ -154,6 +157,7 @@ p.weremaking {
   form#subscription-form {
 	margin-top: 50px;
 	margin-left: 35px;
+	align-items: center;
   }
 
   .popup-message {
@@ -207,6 +211,7 @@ p.weremaking {
 	border-radius: 25px;
 	border: none;
 	text-align: center;
+	padding: 10px 0;
 	text-decoration: none;
 	font-size: 16px;
 	cursor: pointer;
@@ -218,7 +223,11 @@ p.weremaking {
 	background-color: royalblue;
   }
 
-  .popurstyle{
+  .popurstyle {
 	width: 250px;
 	height: 400px;
+  }
+
+  #submit-btn:hover {
+	background-color: rgb(255, 102, 0);
   }
