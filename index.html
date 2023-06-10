@@ -17,7 +17,7 @@
       <a href="index.html">
         <img src="image.png" alt="Description of the image">
       </a>
-
+        <br><br><br><br>
       <p class="underconstr">UNDER CONSTRUCTION</p>
       <p class="weremaking">We're making lots of improvements and will be back soon</p>
 
@@ -65,8 +65,8 @@
       <button type="submit" id="submit-btn">
         <p class="glyphicon glyphicon-arrow-right"></p>
       </button>
-      <div id="error-msg"></div>
-      <div id="success-msg"></div>
+     <!-- <div id="error-msg"></div>
+      <div id="success-msg"></div>-->
     </form>
   </footer>
 </body>
@@ -101,8 +101,8 @@
 <script>
   const form = document.querySelector('#subscription-form');
   const emailInput = document.querySelector('#email-input');
-  const errorMsg = document.querySelector('#error-msg');
-  const successMsg = document.querySelector('#success-msg');
+ // const errorMsg = document.querySelector('#error-msg');
+ // const successMsg = document.querySelector('#success-msg');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
