@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Page</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div class="left-block"></div>
+  <div class="right-block"></div>
+
+  <div class="main-content">
+    <div class="block1">
+      <a href="index.html">
+        <img src="image.png" alt="Description of the image">
+      </a>
+
+      <p class="underconstr">UNDER CONSTRUCTION</p>
+      <p class="weremaking">We're making lots of improvements and will be back soon</p>
+
+      <div class="countdown">
+        <div class="countdown-block">
+          <span class="countdown-value days"></span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-block">
+          <span class="countdown-value-points"><p class="dot"></p><p class="dot"></p></span>
+        </div>
+        <div class="countdown-block">
+          <span class="countdown-value hours"></span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-block">
+          <span class="countdown-value-points"><p class="dot"></p><p class="dot"></p></span>
+        </div>
+        <div class="countdown-block">
+          <span class="countdown-value minutes"></span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-block">
+          <span class="countdown-value-points"><p class="dot"></p><p class="dot"></p></span>
+        </div>
+        <div class="countdown-block">
+          <span class="countdown-value seconds"></span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div>
+      <br><br><br>
+      <p class="weremaking">Check out event page when you wait:</p>
+      <a href="https://www.javascripttutorial.net/">
+        <button class="long-button">Go to the event &nbsp;&nbsp;
+          <p class="glyphicon glyphicon-arrow-right"></p>
+        </button>
+      </a>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <form id="subscription-form">
+      <input type="email" placeholder="Enter your email address" id="email-input">
+      <button type="submit" id="submit-btn">
+        <p class="glyphicon glyphicon-arrow-right"></p>
+      </button>
+      <div id="error-msg"></div>
+      <div id="success-msg"></div>
+    </form>
+  </footer>
+</body>
+<script>
+
+  var countDownDate = new Date("July 24, 2023 00:00:00").getTime();
+
+  var x = setInterval(function () {
+
+    var now = new Date().getTime();
+
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.querySelector(".countdown .days").innerHTML = days;
+    document.querySelector(".countdown .hours").innerHTML = hours;
+    document.querySelector(".countdown .minutes").innerHTML = minutes;
+    document.querySelector(".countdown .seconds").innerHTML = seconds;
+
+    if (distance < 0) {
+      clearInterval(x);
+      document.querySelector(".countdown").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+
+  setTimeout(updateCountdown, 1000);
+</script>
+<script>
+  const form = document.querySelector('#subscription-form');
+  const emailInput = document.querySelector('#email-input');
+  const errorMsg = document.querySelector('#error-msg');
+  const successMsg = document.querySelector('#success-msg');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!emailInput.value || !isValidEmail(emailInput.value)) {
+      // errorMsg.textContent = 'Please enter a valid email address.';
+      // return;
+      function showPopupMessage(message) {
+        const popup = document.createElement('div');
+        popup.classList.add('popup-message');
+        popup.textContent = message;
+        document.body.appendChild(popup);
+
+        setTimeout(() => {
+          popup.remove();
+        }, 3000);
+      }
+    } else if (emailInput.value || isValidEmail(emailInput.value)) {
+      successMsg.textContent = 'Email address is valid.';
+      return;
+    }
+
+
+    fetch('https://example.com/subscribe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: emailInput.value })
+    })
+      .then(response => {
+        if (response.ok) {
+          showPopupMessage('Thank you for subscribing!');
+          form.reset();
+        } else {
+          showPopupMessage('Something went wrong. Please try again later.');
+        }
+      })
+      .catch(error => {
+        showPopupMessage('Something went wrong. Please try again later.');
+      });
+  });
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+</script>
+
+</html>
